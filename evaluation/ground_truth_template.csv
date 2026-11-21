@@ -1,0 +1,4 @@
+video,exercise,lighting,camera_angle,occlusion,real_reps,phase_labels_file
+squat_sample.mp4,Squats,high,profile,none,2,
+demo_squat.mp4,Squats,high,profile,none,3,
+demo_curl.mp4,Bicep Curls,high,profile,none,3,
