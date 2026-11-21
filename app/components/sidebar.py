@@ -8,15 +8,22 @@ def render_sidebar() -> None:
     """Render unified navigation and status sidebar."""
     with st.sidebar:
         st.markdown("### 🏋️ **Smart Gym Assistant**")
-        st.caption("AI Workout Tracker Using Computer Vision")
+        st.caption("Exercise Analysis & Personalized Fitness")
+        st.divider()
+
+        st.markdown("#### 🧭 **Main Sections**")
+        st.page_link("Home.py", label="Home", icon="🏠")
+        st.page_link("pages/1_Exercise_Analysis.py", label="1. Exercise Analysis", icon="🔬")
+        st.page_link("pages/2_Fitness_Recommendations.py", label="2. Fitness Recommendations", icon="🧭")
+
         st.divider()
 
         # Session state overview
         session_result = st.session_state.get("session_result")
         active_exercise = st.session_state.get("active_exercise", "Squats")
 
-        st.markdown("#### 📊 **Status**")
-        st.write(f"**Selected:** `{active_exercise}`")
+        st.markdown("#### 📊 **Last Analysis**")
+        st.write(f"**Exercise:** `{active_exercise}`")
 
         if session_result is not None:
             valid_count = len([r for r in session_result.reps if r.valid])
@@ -24,14 +31,7 @@ def render_sidebar() -> None:
             st.caption(f"Rejected: {session_result.rejected_attempts}")
             st.caption(f"Score: {session_result.summary.get('overall_form', 0.0):.1f}%")
         else:
-            st.info("No completed session in memory")
-
-        st.divider()
-        st.markdown("#### 🧭 **Quick Pages**")
-        st.page_link("Home.py", label="Home & Setup Guide", icon="🏠")
-        st.page_link("pages/1_Workout.py", label="Workout Setup", icon="⚙️")
-        st.page_link("pages/2_Analysis.py", label="Live Tracker", icon="📹")
-        st.page_link("pages/3_Analytics.py", label="Performance Analytics", icon="📈")
+            st.info("No completed video session yet")
 
         st.divider()
         st.caption("Polytechnic Institute • 2026-2027")
